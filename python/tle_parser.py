@@ -1,7 +1,9 @@
 """
 TLE (Two-Line Element) Parser Module
 
-Converts TLE data to orbital parameters.
+Converts 2LE (Two-Line Element) data to orbital parameters.
+Note: This parser expects 2LE format (without satellite name lines),
+where each satellite is represented by exactly 2 lines.
 """
 
 import numpy as np
@@ -9,10 +11,16 @@ import numpy as np
 
 def tle_to_orbital_params(filename: str) -> np.ndarray:
     """
-    Parse TLE file and extract orbital parameters.
+    Parse 2LE file and extract orbital parameters.
+    
+    This function expects the 2LE format where each satellite has exactly 2 lines:
+    - Line 1: Satellite catalog number, classification, launch info, epoch, etc.
+    - Line 2: Orbital elements (inclination, RAAN, eccentricity, etc.)
+    
+    Note: This is NOT the standard 3-line TLE format that includes a satellite name.
     
     Args:
-        filename: Path to the TLE file
+        filename: Path to the 2LE file
         
     Returns:
         numpy array with columns: [a, e, inclination, raan, arg_perigee, mean_anomaly]

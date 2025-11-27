@@ -29,7 +29,7 @@ def plane_change(inc_1: float, inc_2: float, a_1: float, a_2: float) -> float:
     
     # Inclination change
     del_theta = abs(theta_2 - theta_1)
-    delta_v = np.sqrt(v1**2 + v2**2 - 2 * v1 * v2 * np.cos(np.radians(np.degrees(del_theta))))
+    delta_v = np.sqrt(v1**2 + v2**2 - 2 * v1 * v2 * np.cos(del_theta))
     delta_v = delta_v * 1000  # Convert to m/s
     
     return delta_v

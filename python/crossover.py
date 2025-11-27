@@ -33,14 +33,20 @@ def ordered_crossing(parent1: np.ndarray, parent2: np.ndarray, crossover_locatio
     segment = parent1[1:crossover_location]
     
     # Get remaining elements from parent2 that are not in segment
-    remaining = [x for x in parent2[1:] if x not in segment]
+    segment_set = set(segment)
+    remaining = [x for x in parent2[1:] if x not in segment_set]
     
     # Create the child sequence
     child[1:crossover_location] = segment
     
     # Fill the remaining slots in the child with the 'remaining' sequence
     remaining_slots = n - crossover_location
-    child[crossover_location:] = remaining[:remaining_slots]
+    # Ensure we don't exceed the remaining elements available
+    if len(remaining) >= remaining_slots:
+        child[crossover_location:] = remaining[:remaining_slots]
+    else:
+        # This shouldn't happen with valid permutations, but handle gracefully
+        child[crossover_location:crossover_location + len(remaining)] = remaining
     
     return child
 

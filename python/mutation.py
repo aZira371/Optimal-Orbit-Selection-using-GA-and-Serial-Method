@@ -51,8 +51,15 @@ def inverse_mutation(child: np.ndarray, mutate_rate: float, min_a_start_index: i
     for i in range(popu_size):
         if np.random.random() < mutate_rate:
             # Select a random subset of genes to invert
-            subset_length = np.random.randint(2, n)  # Minimum 2 genes
-            subset_start = np.random.randint(1, n - subset_length + 1)  # Start from index 1
+            # Maximum subset length is n-1 (to ensure at least 2 genes and start from index 1)
+            max_subset_length = min(n - 1, n - 1)  # Leave room for start position
+            if max_subset_length < 2:
+                continue  # Skip if array is too small
+            subset_length = np.random.randint(2, max_subset_length + 1)  # Minimum 2 genes
+            max_start = n - subset_length
+            if max_start < 1:
+                continue  # Skip if not enough room
+            subset_start = np.random.randint(1, max_start + 1)  # Start from index 1
             
             # Define the subset indices
             subset_end = subset_start + subset_length
@@ -81,8 +88,15 @@ def scram_mutation(child: np.ndarray, mutate_rate: float, min_a_start_index: int
     for i in range(popu_size):
         if np.random.random() < mutate_rate:
             # Select a random subset of genes to scramble
-            subset_length = np.random.randint(2, n)  # Minimum 2 genes
-            subset_start = np.random.randint(1, n - subset_length + 1)  # Start from index 1
+            # Maximum subset length is n-1 (to ensure at least 2 genes and start from index 1)
+            max_subset_length = min(n - 1, n - 1)  # Leave room for start position
+            if max_subset_length < 2:
+                continue  # Skip if array is too small
+            subset_length = np.random.randint(2, max_subset_length + 1)  # Minimum 2 genes
+            max_start = n - subset_length
+            if max_start < 1:
+                continue  # Skip if not enough room
+            subset_start = np.random.randint(1, max_start + 1)  # Start from index 1
             
             # Define the subset indices
             subset_end = subset_start + subset_length
