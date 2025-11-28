@@ -10,11 +10,24 @@ The project implements three optimization methods to find the optimal order of o
 2. **Series Method** - A greedy algorithm that selects the best next orbit at each step
 3. **Brute Force Permutation** - Exhaustive search for small problem sizes
 
+## Quick Start - Jupyter Notebook
+
+The easiest way to run and explore all methods is through the Jupyter notebook:
+
+```bash
+cd python
+pip install -r requirements.txt
+jupyter notebook optimal_orbit_selection.ipynb
+```
+
+Or view the pre-executed notebook directly on GitHub: [optimal_orbit_selection.ipynb](optimal_orbit_selection.ipynb)
+
 ## Requirements
 
 - Python 3.7+
 - NumPy >= 1.20.0
 - Matplotlib >= 3.3.0
+- Jupyter >= 1.0.0 (for notebook)
 
 Install dependencies:
 ```bash
@@ -25,22 +38,23 @@ pip install -r requirements.txt
 
 ```
 python/
-├── README.md                 # This file
-├── requirements.txt          # Python dependencies
-├── ga_main.py               # Main Genetic Algorithm implementation
-├── series_method.py         # Greedy serial method
-├── brute_force.py           # Exhaustive permutation search
-├── tle_parser.py            # TLE file parser
-├── orbital_mechanics.py     # Delta-V calculation functions
-├── objective.py             # Objective function (spent propellant mass)
-├── fitness.py               # Fitness evaluation for GA
-├── population.py            # Population initialization
-├── selection.py             # Parent selection (root-based)
-├── crossover.py             # Ordered crossover operators
-├── mutation.py              # Mutation operators (swap, inverse, scramble)
-├── next_generation.py       # Next generation creation
-├── repair.py                # Solution repair for invalid individuals
-└── validity.py              # Solution validity checking
+├── README.md                      # This file
+├── requirements.txt               # Python dependencies
+├── optimal_orbit_selection.ipynb  # Interactive Jupyter notebook (run all methods)
+├── ga_main.py                     # Main Genetic Algorithm implementation
+├── series_method.py               # Greedy serial method
+├── brute_force.py                 # Exhaustive permutation search
+├── tle_parser.py                  # TLE file parser
+├── orbital_mechanics.py           # Delta-V calculation functions
+├── objective.py                   # Objective function (spent propellant mass)
+├── fitness.py                     # Fitness evaluation for GA
+├── population.py                  # Population initialization
+├── selection.py                   # Parent selection (root-based)
+├── crossover.py                   # Ordered crossover operators
+├── mutation.py                    # Mutation operators (swap, inverse, scramble)
+├── next_generation.py             # Next generation creation
+├── repair.py                      # Solution repair for invalid individuals
+└── validity.py                    # Solution validity checking
 ```
 
 ## Usage
